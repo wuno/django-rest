@@ -1,14 +1,7 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html>
-<head>
-    <script src="{% static "serviceapp/js/jquery.js" %}"></script>
-    <script type="text/javascript" src="{% static "serviceapp/bootstrap/js/bootstrap.min.js" %}"></script>
-    <link rel="stylesheet" href="{% static "serviceapp/bootstrap/css/bootstrap.min.css" %}">
-    <link rel="stylesheet" href="{% static "serviceapp/bootstrap/css/bootstrap-theme.min.css" %}">
-    <link rel="stylesheet" href="{% static "serviceapp/css/styles.css" %}">
-</head>
-<body>
+{% extends "serviceapp.html" %}
+{% block title %}Github API{% endblock %}
+{% block content %}
+<div class="row main">
 <h1 class="text-center"> Github User Data </h1>
   <div class="col-lg-12">
       <div class="container text-center">
@@ -53,5 +46,5 @@
             </table>
         </div>
     </div>
-</body>
-</html>
+  </div>
+{% endblock %}
