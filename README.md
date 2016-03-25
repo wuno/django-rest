@@ -20,10 +20,10 @@ INTRODUCTION
 This project connects to the rewardStyle API. It uses the exposed data to perform operations in a browser. 
 
  * For a full description of the module, visit the project page:
-   https://github.com/wuno/reward-api
+   https://github.com/wuno/django-rest
 
  * To submit bug reports and feature suggestions, or to track changes:
-   https://github.com/wuno/reward-api
+   https://github.com/wuno/django-rest
 
 
 REQUIREMENTS
