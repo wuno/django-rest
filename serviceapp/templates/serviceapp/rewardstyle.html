@@ -1,7 +1,36 @@
-{% extends "serviceapp.html" %}
+{% extends "base.html" %}
 {% block title %}rewardStyle API{% endblock %}
 {% block content %}
 <div class="row main">
-<h3>This is the rewardStyle API</h3>
-</div>
+<h1 class="text-center">Advertisers</h1>
+  <div class="col-lg-12">
+      <div class="container text-center">
+          <form class="form-signin" id="login_form" method="post" action=".">
+            {% csrf_token %}
+            <br>
+            <input type="text" name="advertiserName" class="form-control" placeholder="Advertiser Name" value="" required autofocus>
+            <br>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Get Data</button>
+          </form>
+      </div>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-striped tablesorter">
+                <thead>
+                <tr>
+                  <th class="header"> Advertiser <i class="icon-sort"></i></th>
+                </tr>
+            </thead>
+            <tbody>
+            
+            {% for key in data %}
+                <tr>
+                    <td>{{ key.cards }}</td>
+                </tr>
+            {% endfor %}
+            
+            </tbody>
+            </table>
+        </div>
+    </div>
+  </div>
 {% endblock %}

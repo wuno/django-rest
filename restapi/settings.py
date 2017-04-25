@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'tastypie', 
+    'tastypie',
+    'haystack',
     'serviceapp',
 ]
 
@@ -62,7 +63,7 @@ ROOT_URLCONF = 'restapi.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'templates/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,17 +77,37 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'restapi.wsgi.application'
-
+PATH="/Applications/Postgres.app/Contents/Versions/9.5/bin:$PATH"
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'reward',
+        'USER': 'postgres',
+        'PASSWORD': 'Universal!3938',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
+
+
+# haystack search using elasticsearch
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://127.0.0.1:9200/',
+        'INDEX_NAME': 'haystack',
+    },
+}
+
+# http://django-haystack.readthedocs.org/en/latest/signal_processors.html
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
+# increase the default number of results (from 20)
+HAYSTACK_SEARCH_RESULTS_PER_PAGE = 40
 
 
 # Password validation
@@ -127,3 +148,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
+
+
+

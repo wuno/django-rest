@@ -1,0 +1,8 @@
+{{ object.product_id }}
+{{ object.product_name }}
+{{ object.product_url }} 
+{{ object.advertiser }}
+{{ object.designer }}
+{{ object.image_url }}
+{{ object.price }}
+{{ object.commission }}

@@ -1,10 +1,13 @@
 from django.conf.urls import url
 from .import views
+from django.contrib import admin
 
+admin.autodiscover()
 
 urlpatterns = [
   url(r'^$', views.index, name='index'),
-  url(r'^tmdb/$', views.tmdb, name='tmdb'),
   url(r'^rewardstyle/$', views.rewardstyle, name='rewardstyle'),
-  url(r'^github/$', views.github, name='github'),
+  url(r'^admin/', admin.site.urls),
 ]
+
+

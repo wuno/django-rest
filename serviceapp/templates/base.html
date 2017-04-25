@@ -1,0 +1,93 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+{% block title %}Services App{% endblock %}
+    <script src="{% static 'serviceapp/js/jquery.js' %}"></script>
+    <script src="{% static 'serviceapp/bootstrap/js/bootstrap.min.js' %}"></script> 
+    <link href="{% static 'serviceapp/bootstrap/css/bootstrap.min.css' %}"  rel="stylesheet" type="text/css" />
+    <link href="{% static 'serviceapp/bootstrap/css/bootstrap-theme.min.css' %}"  rel="stylesheet" type="text/css" />
+    <link href="{% static 'serviceapp/css/styles.css' %}"  rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+          <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="{% url 'index' %}" class="navbar-brand">Reward Style API</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+                <li class="hvr-curl-top-right"><a href="{% url 'index' %}">Home</a></li>
+              	<li class="hvr-curl-top-right"><a href="{% url 'rewardstyle' %}">rewardStyle</a></li>
+                <li class ="header-form"> 
+          <form action="/search" method="get" class="navbar-search pull-left">
+          <input type="text" placeholder="Search" class="search-query span2" name="q">
+          </form></li>
+              </ul> 
+      		<div class="navbar-form pull-right">
+      			<img class="nav-icon" src="{% static 'serviceapp/images/wuno-icon.png' %}" alt="Wuno Inc Logo" />
+      		</div>
+    	</div>
+	</div>
+</div>
+
+<div class="container-fluid">
+
+{% block content %}
+<div class="container">
+    <div class="row row-centered main">
+        <div class="col-xs-6 col-centered">  
+          <h3>A Restful API Built With...</h3>            
+          <p>Django, Tastypie, Haystack & Elastic Search</p>
+        </div>
+    </div>
+        <div class="col-xs-3 col-md-6 col-centered">
+        <h4>Making Calls</h4>
+        
+        <h3>Return the full product feed</h3>
+        <p>http://localhost:8000/api/v1/product</p>
+        <h3>Search the product feed</h3>
+        <p>http://localhost:8000/api/v1/product/search?keywords=KeyWordInProducts</p>
+        <h3>Search the column by name for exact matches</h3>
+        <p>http://localhost:8000/api/v1/product/?price=32.00</p>
+        </div>    
+        <div class="col-xs-3 col-md-6 col-centered">
+        <h4>Response Format And Colum Names</h4>
+        <h5>JSON Response</h5>
+        <p>"objects": [</br>
+    {</br>
+      "advertiser": "100% Pure",</br>
+      "commission": "1.35",</br>
+      "designer": "100% Pure",</br>
+      "id": 2006,</br>
+      "image_url": "https://cdn.shopify.com/s/files/1/0648/1955/products/1CTLBS-2.jpeg?v=1410561656",</br>
+      "price": "15.00",</br>
+      "product_id": "b07bd81903966c63546faa66eacd065a",</br>
+      "product_name": "Fruit Pigmented Lip Butter: Strawberry",</br>
+      "product_url": "http://rstyle.me/dynamic?t=MD5-YOUR-OAUTH-TOKEN&p=b07bd81903966c63546faa66eacd065a",</br>
+      "resource_uri": "/api/v1/product/2006/"</br>
+    },</p>
+        </div>
+
+    </div>
+</div>
+    <div class="row main">
+ 
+
+</div>
+
+{% endblock %}
+	</div>
+
+<div class="row text-center navbar footer">
+    <div class="col-md-12">
+        <p>2012 Wuno, Inc. | Creative Designs From Creative Minds</p>
+    </div>
+</div>
+</body>
+</html>
